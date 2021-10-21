@@ -54,20 +54,26 @@
 
 % Costume commands
 \newcommand{\scale}[2]
-{
+{%
   \MULTIPLY{\numberGOLD}{#1}{\sol}
   #2
 }
 
-\newcommand{\N}{\mathcal{N}}
-\newcommand{\R}{\mathcal{R}}
-\newcommand{\Z}{\mathcal{Z}}
-\newcommand{\C}{\mathcal{C}}
-\newcommand{\Q}{\mathcal{Q}}
-\newcommand{\F}{\mathcal{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
 
 \newcommand{\methodDoc}[3]
-{
+{%
   #1 #2(#3)
 }
 
+\newcommand{\sets}[1]
+{%
+  \left\{ #1 \right\}
+}
+
+\renewcommand\qedsymbol{$\mathcal{Q.E.D}$}
