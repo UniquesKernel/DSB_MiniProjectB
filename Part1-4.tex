@@ -4,6 +4,14 @@ Vi har fundet et lydklip af vindmølle støj med en sampling frekvens på 48kHz 
 
 Det kan ses at vindmøllen svinger i lydstyrke ca. en gang hvert 1.5 sekund, mens blæseren kører med en mere konstant (og lavere) lydstyrke.
 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{"figures/Windmill_10s"}
+\caption{10s lyd fra vindmølle}
+\label{fig:wm_10s}
+\end{figure}
+
 Ud fra sampling frekvenserne kan man beregne frekvensopløsningen med 
 \begin{equation}
 \Delta f = \frac{f_{sample}}{N}
@@ -12,18 +20,37 @@ Ud fra sampling frekvenserne kan man beregne frekvensopløsningen med
 For vindmøllen, med $f_{sample}=48000$ bliver det $\Delta f_{wm} = \frac{48000}{480000} = 0.1$Hz.
 PC blæseren har samme frekvensopløsning.
 
-
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{"figures/Windmill_10s"}
-\caption{10s lyd fra vindmølle}
-\label{fig:wm_10s}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{"figures/pcFan_10s"}
+\includegraphics[width=0.8\textwidth]{"figures/pcFan_10s"}
 \caption{10s lyd fra PC blæser}
 \label{fig:pc_10s}
 \end{figure}
+
+\section{Del 2}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{"figures/Windmill_frekvens"}
+\caption{Frekvens spektrum af vindmølle}
+\label{fig:WM_freq}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{"figures/pcFan_frekvens"}
+\caption{Frekvens spektrum af PC blæser}
+\label{fig:pc_freq}
+\end{figure}
+
+
+\section{Del 3}
+
+\begin{equation}
+E_{low} = \frac{2}{N} \sum_{f=0}^{80Hz} |X(f)|^2
+\end{equation}
+
+\begin{equation}
+E_{high} = \frac{2}{N} \sum_{f=80Hz}^{max} |X(f)|^2
+\end{equation}
 
