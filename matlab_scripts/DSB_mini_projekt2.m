@@ -26,16 +26,51 @@ title("Vindmølle")
 xlabel("Sekunder")
 ylabel("Lydstyrke")
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fsample_WM = 48000;
+fsample_PC = 44100;
+
+N_WM=length(WM10);
+N_PC=length(pcFan10);
+
+delta_f_WM = fsample_WM/N_WM;
+delta_f_PC = fsample_PC/N_PC;
+
+f_axis_WM = [0:delta_f_WM:fsample_WM-delta_f_WM];
+f_axis_PC = [0:delta_f_PC:fsample_PC-delta_f_PC];
+
+fftWM = fft(WM10);
+fftPC = fft(pcFan10);
+
+WM_freq_norm = 20*log10(2*abs((1/N_WM)*fftWM));
+PC_freq_norm = 20*log10(2*abs((1/N_PC)*fftPC));
+
 figure()
-fsample = 44100;
-N=length(pcFan)
+semilogx(f_axis_WM,WM_freq_norm)
+title("Vindmølle")
+xlabel("Frekvens (Hz)")
+ylabel("dB")
 
-delta_f = fsample/N;
+figure()
+semilogx(f_axis_PC,PC_freq_norm)
+title("PC blæser")
+xlabel("Frekvens (Hz)")
+ylabel("dB")
 
-f_axis = [0:delta_f:fsample-delta_f];
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fftPCFan = fft(pcFan);
+%lowpass energi:
 
-pcFan_freq_norm = 20*log10(2*abs((1/N)*fftPCFan));
+n_max=80/0.1;
 
-semilogx(f_axis,pcFan_freq_norm)
+E_WM_low = 2/N_WM*sum([abs(fftWM(1:n_max)).^2])
+E_pc_low = 2/N_PC*sum([abs(fftPC(1:n_max)).^2])
+
+
+%highpass energi
+E_WM_high = 2/N_WM*sum([abs(fftWM(n_max:end)).^2])
+E_pc_high = 2/N_PC*sum([abs(fftPC(n_max:end)).^2])
+
+
+signal_ration_WM = E_WM_low/E_WM_high
+signal_ration_pc = E_pc_low/E_pc_high
