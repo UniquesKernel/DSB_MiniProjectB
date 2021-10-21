@@ -16,9 +16,12 @@ Ud fra sampling frekvenserne kan man beregne frekvensopløsningen med
 \begin{equation}
 \Delta f = \frac{f_{sample}}{N}
 \end{equation}
-
-For vindmøllen, med $f_{sample}=48000$ bliver det $\Delta f_{wm} = \frac{48000}{480000} = 0.1$Hz.
-PC blæseren har samme frekvensopløsning.
+hvor N er antal samples, og derfor også antallet af frekvens bins.
+Da begge lydklip er 10 sekunder består de af $f_{sample}*10$ samlpes, hvorfor samplefrekvensen bliver: 
+\begin{equation}
+\Delta f = \frac{f_{sample}}{f_{sample}*10} = 0.1 Hz
+\end{equation}
+For vindmøllen, med $f_{sample}=48000$ og $N=480000$ : $\Delta f_{wm} = \frac{48000}{480000} = 0.1$Hz.
 
 \begin{figure}[h]
 \centering
@@ -49,6 +52,8 @@ PC blæseren har samme frekvensopløsning.
 
 \section{Del 3}
 
+Til at udregne lavfrekvens- og højfrekvens-energi bruges ligningerne:
+
 \begin{equation}
 E_{low} = \frac{2}{N} \sum_{f=0}^{80Hz} |X(f)|^2
 \end{equation}
@@ -57,3 +62,17 @@ E_{low} = \frac{2}{N} \sum_{f=0}^{80Hz} |X(f)|^2
 E_{high} = \frac{2}{N} \sum_{f=80Hz}^{max} |X(f)|^2
 \end{equation}
 
+For vindmøllen giver det: $E_{low} = 129.6$ og  $E_{high} = 66934$, mens de for blæseren giver  $E_{low} = 59.04$ og  $E_{high} = 65.81$.\\
+
+For vindmøllen fås $\frac{E_{low}}{E_{high}} = 0.0019$ og fov PC blæseren $\frac{E_{low}}{E_{high}} =0.8972$.\\
+
+I begge tilfælde ses det at der er mere energi i de høje frekvenser, end i de lave, og at der for vindmøllen er meget mere energi ved høje frekvenser. Dette ses ved at frekvens spektret topper over 80Hz, mens PC blæseren har energien mere ligeligt fordelt.
+
+
+\section{Del 4}
+
+Hvis signalet forkortes vil de laveste frekvenser ikke kunne medregnes, da de ville blive mindre end frekvens opløsningen. Dette forventes at forskyde energis-forholdet mod mere højfrekvent energi. Tilsvarende kan en forlængelse af signalet  forventes at ændre forholdet til fordel for den lavfrekvente energi, da lavere frekvense nu kan medregnes. Det er dog usandsynligt at en ændring vil kunne måles, da energien i de lave frekvenser er lille.\\
+
+For vindmøllen viser det målte energi forhold at det meste energi er i frekvenser over 80Hz, så med mindre der er en enorm mængde energi med frekvenser under 0.1 Hz vil det ikke forventes en betydelig ændring.
+
+ 
