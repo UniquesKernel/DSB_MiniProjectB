@@ -17,10 +17,11 @@ delta_t=(time(end)-time(1))/length(time)
 f_sample=1/delta_t;
 
 delta_f=f_sample/data_N;
-
+figure(1)
 plot(time,data);
 xlabel("Tid (dage) efter 1-1-2009");
-ylabel("flux")
+ylabel("Photometrisk flux (e^-/s)")
+
 
 data_spec=fft(data);
 
@@ -28,4 +29,16 @@ data_freq_norm = 20*log10(2*abs((1/data_N)*data_spec));
 f_axis = [0:delta_f:f_sample-delta_f];
 
 figure(2)
+
 semilogx(f_axis,data_freq_norm)
+xlabel("Frekvens (1/dag)");
+ylabel("Intensitet")
+axis([0.11 100 -80 40])
+hold on
+smooth_spec = raw_smooth(data_spec',35);
+smooth_data_freq_norm = 20*log10(2*abs((1/data_N)*smooth_spec));
+
+semilogx(f_axis,smooth_data_freq_norm,'r')
+% xlabel("Frekvens (1/dag)");
+% ylabel("Intensitet")
+% axis([0.11 100 -80 40])
