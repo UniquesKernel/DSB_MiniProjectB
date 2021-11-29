@@ -1,0 +1,26 @@
+clear all
+close all
+clc
+
+kepler_data=fitsread("kplr010001893-2011177032512_llc.fits","binarytable");
+
+time_ = kepler_data{1};
+data_ = kepler_data{4};
+
+data=data_(~isnan(data_));
+time=time_(~isnan(data_));
+
+sample_rate=length(time_)/(time_(end)-time_(1))
+
+plot(time,data);
+xlabel("Tid (dage) efter 1-1-2009");
+ylabel("flux")
+
+data_spec=fft(data);
+data_N=length(data);
+
+data_freq_norm = 20*log10(2*abs((1/data_N)*data_spec));
+f_axis = [0:delta:data_N-delta];
+
+figure(2)
+semilogx(data_freq_normq_norm)
