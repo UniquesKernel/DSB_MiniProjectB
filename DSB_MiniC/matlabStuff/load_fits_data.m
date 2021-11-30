@@ -14,7 +14,7 @@ data_N=length(data);
 
 delta_t=(time(end)-time(1))/length(time)
 
-f_sample=1/delta_t;
+f_sample=1/delta_t
 
 delta_f=f_sample/data_N;
 figure(1)
