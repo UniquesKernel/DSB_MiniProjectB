@@ -1,0 +1,67 @@
+\chapter{P6.4}
+
+Given a filter described by the following equation.
+a) $y(n)= x(n)-y(n-2)$
+
+Transferring into Z domain:
+
+$ Y(z) = X(z)-Y(z)*z^(-2) ->  Y(z)*(1+z^(-2)) = X(z)$
+
+Transfer function calculated as H(z) = Y(z)/X(z):
+
+$ H(z) = Y(z)/X(z) =  1/(1+z^(-2)) -> z^2/(z^2+1) $
+
+The following transfer functions can be expressed in polar as well as in rectangular coordinates:
+
+For polar substitute z for e^(jw) we get:
+ 
+$ H(w) = 1/(1+e^(-j*w*2)) $
+
+For rectangular expand e^jw to cos(w)+jsin(w):
+
+$ 1/(1+sin(2w)+jcos(2w)) $
+
+Given a filter described by the following equation.
+b) $y(n)= x(n) + 3x(n-1) + 2x(n-2) - y(n-3)$
+
+Transferring into Z domain .
+
+$ Y(z) = X(z) + X(z)3z^(-1) + X(z)2z^(-2) - Y(z)z^(-3) $
+
+$ Y(z)(1+z^(-3)) = X(z)(1+3z^(-1)+2z^(-2))$
+
+Transfer function calculated:
+
+$ H(z)= (1+3z^(-1)+2z^(-2))/(1+z^(-3)) $
+
+For polar substitute we get:
+
+$ H(w) = (1+3e^(-jw)+2e^(-2jw))/(1+e^(-3jw))$
+
+For rectangular substitution:
+
+$ H(w) = (2 + cos(w) + jsin(w))/(2*cos(w)-1) $
+
+Given a filter described by the following equation.
+c) $y(n)= x(n) + x(n-1) + x(n-3) + x(n-4) +  y(n-2)$
+
+Transferring into Z domain .
+
+$ Y(z) = X(z) + X(z)z^(-1) + X(z)z^(-3) + X(z)z^(-4) - Y(z)z^(-2) $
+
+$ Y(z)(1+z^(-2)) = X(z)(1 + z^(-1) + z^(-3) + z^(-4))$
+
+Transfer function calculated:
+
+$ H(z)= (1+z^(-1)+z^(-3)+z^(-4))/(1+z^(-2)) $
+
+For polar substitute we get:
+
+$ H(w) = (1+e^(-jw)+e^(-3jw)+e^(-4jw))/(1+e^(-2jw))$
+
+For rectangular substitution:
+
+$ H(w) = (1+cos(w)-jsin(w)+cos(3w)-jsin(3w)+cos(4w)-jsin(4w))/
+		  (1 + cos(2w)-jsin(2w)) $
+
+

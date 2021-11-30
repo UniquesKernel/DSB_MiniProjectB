@@ -37,11 +37,12 @@ X = x*W;
 dft_x_fft = fft(x);
 
 figure(3); clf
-plot(abs(dft_x_fft))
+plot(abs(dft_x_fft),'.','MarkerSize',30)
 hold on
-plot(1:7,abs(X),'r','linewidth',2)
+plot(1:7,abs(X),'.r','MarkerSize',30)
 grid on
 title('Matalb fft vs manual fft')
+legend('Matlab-DFT','Manual DFT')
 
 %% Svar e)
 %  De to DFT´er er IKKE ens da vi har udregnet twiddle-faktoren for 8 punter N = 8 og fft()
