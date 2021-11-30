@@ -89,6 +89,90 @@ With all of the preperation work done, we can now apply our filter to our datase
 \end{figure}
 
 Its clear fron this comparison that we have manage to remove a some of the signal noice, but since this data set does not show
-anything usefull, we wont be able to tell anything from this filtering.
+anything usefull (the spike is a kalibration issue), we wont be able to tell anything from this filtering.
 
+\newpage
+
+\subsection{IIR Filter}
+
+For the IIR filter the ``butter'' function has been used
+too design the transfer function and thus produce the 
+filtering coefficients.
+
+Once this has been done everything plays out much like the 
+FIR filter, we can plot our transfer function and the 
+hanning window function to see the coefficients
+and their values as functions of indexing.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{matlabStuff/IIR_responds_with_window.png}
+  \caption{Impulse responds with window function for the IIR filter}%
+  \label{fig:resultingTransferFuntionIIR}
+\end{figure}
+
+Here we can see that the new Impulseresponds does not 
+tapper at all compared to the FIR filter which did 
+tapper off toward the center.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{matlabStuff/resulting_filter_function_IIR.png}
+  \caption{Resulting transfer function overlayed with and without the window function}%
+  \label{fig:resultingTransferFuntionIIR}
+\end{figure}
+
+unlike the FIR filter which produce a simple peak, and reduced peak for our transfer function the IIR butterfilter, has
+produced a resulting transfer function that seem to cover the entire spectre of frequencies.
+
+Note also that when the window function is applied to it, it is
+substantially reduced, over the entire spectre as well.
+
+Finally lets see what the result off applying this filter to our original data.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{matlabStuff/IIRFilterCompare.png}
+  \caption{Data comparison for original data and IIR filtered data}%
+  \label{fig:IIRCompare}
+\end{figure}
+
+As we can see in \autoref{fig:IIRCompare} this has removed any
+hint of noice, but if there were significant data in this
+dataset it might have remove that as well.
+IIR could therefore at least in this case be too strict of a 
+filter to use and the FIR filter might therefore be prefered.
+
+\newpage
+
+\subsection{Experimenting with different cutoff frequencies and orders}
+If we try with a different cutoff frequency, compared to what
+was seen in \autoref{fig:datasetComparison} we can see that
+lowering the frequency cutoff for our lowpass filter
+means that we are removing more potential noice, but
+also have a higher chance of removing vital data points.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{matlabStuff/FIR20CutOff.png}
+  \caption{Data comparison for original data and $f_{c}=5$ instead of the origianl $f_c = 10$}%
+  \label{fig:resultingTransferFuntion20cutoff}
+\end{figure}
+
+Its not shown here but not that it will in general lead to a
+wider Impulseresponds and vice versa for higher frequence cutoffs.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{matlabStuff/datasetHigherOrder.png}
+  \caption{Data comparison for original data and higher order filtered data}%
+  \label{fig:resultingTransferFuntion20cutoff}
+\end{figure}
+
+Here we dont see much difference, maybe because the filter order is alread very high, but we can see that the data is a little more refined that for \autoref{fig:datasetComparison}.
+Obviously if we had a lower order filter the data would be less refined once filtered.
+
+
+
+\newpage
 

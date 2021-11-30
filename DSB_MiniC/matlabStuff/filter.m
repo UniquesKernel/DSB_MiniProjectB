@@ -18,7 +18,7 @@ delta_t = (time(end)-time(1))/length(time);
 
 f_sample=1/delta_t;
 f_cutoff = 10;
-M = 250;
+M = 500;
 
 freq_resolution = f_sample / M
 freq_bin = f_cutoff / freq_resolution;
@@ -95,7 +95,7 @@ title('unfiltered data')
 xlabel('number of days after 01-01-2019');
 ylabel('Photometrix flux')
 
-butterfilter = butter(M,f_cutoff/(f_sample/2),"low");
+[butterfilter,b] = butter(M,f_cutoff/(f_sample/2),"low")
 new_data = ones(data_N,1);
 data_ext=[zeros(1,M) data'];
 for i = M:data_N+M
@@ -109,9 +109,31 @@ end
 butterfilter = fftshift(real(ifft(butterfilter)));
 
 figure(6)
+hold on
+subplot(2,1,1)
 plot(time(M+2:end),new_data(M+2:end-1))
+title('filtered data')
+xlabel('number of days after 01-01-2019');
+ylabel('Photometric flux')
+subplot(2,1,2); 
+plot(time,data);
+title('unfiltered data')
+xlabel('number of days after 01-01-2019');
+ylabel('Photometrix flux')
+
 figure(7)
 axis([1 M+1 -inf inf])
 hold on
 plot(hanning(M+1)*max(abs(butterfilter)))
 plot(butterfilter.*hanning(M+1)')
+title('Impulsresponds with window')
+xlabel('coefficients')
+
+w_hanButter = butterfilter.*hanning(M+1)';
+figure(8)
+hold on
+plot(abs(fft(butterfilter(1:f_sample_round/2))))
+plot(abs(fft(w_hanButter(1:f_sample_round/2))),'r','linewidth',2)
+title('resulting transfer function')
+legend('without window', 'with window')
+
