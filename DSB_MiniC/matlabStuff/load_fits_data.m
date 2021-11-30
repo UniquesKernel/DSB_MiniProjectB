@@ -35,10 +35,10 @@ xlabel("Frekvens (1/dag)");
 ylabel("Intensitet")
 axis([0.11 100 -80 40])
 hold on
-smooth_spec = raw_smooth(data_spec',35);
+smooth_spec = raw_smooth(data_spec(2:end)',35);
 smooth_data_freq_norm = 20*log10(2*abs((1/data_N)*smooth_spec));
 
-semilogx(f_axis,smooth_data_freq_norm,'r')
+semilogx(f_axis(2:end),smooth_data_freq_norm,'r')
 % xlabel("Frekvens (1/dag)");
 % ylabel("Intensitet")
 % axis([0.11 100 -80 40])
