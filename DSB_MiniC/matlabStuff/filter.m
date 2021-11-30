@@ -83,8 +83,17 @@ for i = M:data_N+M
 end
 
 figure(5)
-plot(time(M+2:end),new_data(M+2:end-1))
-
+hold on
+subplot(2,1,1)
+plot(time(M+2:end),new_data(M+2:end-1));
+title('filtered data')
+xlabel('number of days after 01-01-2019');
+ylabel('Photometric flux')
+subplot(2,1,2); 
+plot(time,data);
+title('unfiltered data')
+xlabel('number of days after 01-01-2019');
+ylabel('Photometrix flux')
 
 butterfilter = butter(M,f_cutoff/(f_sample/2),"low");
 new_data = ones(data_N,1);

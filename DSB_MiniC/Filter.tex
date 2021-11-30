@@ -58,6 +58,37 @@ data set through.
   \label{}
 \end{figure}
 
+Now that we have our transfer function, we can apply it to our data to see if we can reduce the potential noice in data.\
+we can plot its coefficients together with the window function, along with the resultat transfer function to see if it
+does indeed ``cover'' the peak around $10Hz$.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.75]{matlabStuff/impulsresponds_with_window.png}
+  \caption{Impulseresponds overlayed with the window function, showing its koefficent values as functions of index numbers}%
+  \label{fig:impulserespondsWithWindow}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.65]{matlabStuff/resuting_transfer_function.png}
+  \caption{Resulting transfer function overlayed with and without the window function}%
+  \label{fig:resultingTransferFuntion}
+\end{figure}
+
+\subsubsection{Applying the FIR filter}
+With all of the preperation work done, we can now apply our filter to our dataset to see the results.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.62]{matlabStuff/datasetComparison.png}
+  \caption{Side by side comparison of the data before and after the filter has been applied}%
+  \label{fig:datasetComparison}
+\end{figure}
+
+Its clear fron this comparison that we have manage to remove a some of the signal noice, but since this data set does not show
+anything usefull, we wont be able to tell anything from this filtering.
 
 
-Now that we have our transfer function, we can apply it to our data to see if we can reduce the potential noice in data.
