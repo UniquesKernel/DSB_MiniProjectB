@@ -176,3 +176,16 @@ Obviously if we had a lower order filter the data would be less refined once fil
 
 \newpage
 
+\section{Group Delay}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{matlabStuff/groupDelay.png}
+  \caption{Data comparison for original data and higher order filtered data}%
+  \label{fig:groupDelay}
+\end{figure}
+
+We calculate the group delay for the original IIR filter using matlabs $grpdelay$ function. This is shown in \autoref{fig:groupDelay}. It shows the delay through the IIR filter. Note the massive delay around 0,1. The negative delay is interpreted as the filter anticipating the value of the signal.
+
+\newpage
