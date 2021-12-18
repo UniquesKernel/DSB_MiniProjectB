@@ -29,7 +29,7 @@ plot(time,data);
 xlabel("Tid (dage) efter 1-1-2009");
 ylabel("Photometrisk flux (e^-/s)")
 
-new_data=movmean(data,10);
+new_data=movmean(data,50);
 
 
 
@@ -56,7 +56,7 @@ ylabel('Photometrix flux')
 figure(3)
 plot(lags, corrData);
 xlabel("lag");
-ylabel("Korrelation")
+ylabel("Correlation")
 axis([-5000 5000 -0.2 0.2])
 
 
@@ -64,7 +64,7 @@ axis([-5000 5000 -0.2 0.2])
 
 figure(4)
 hold on
-plot(mod(time,0.3),FlatData,'.');
+plot(mod(time+0.2,0.1),FlatData,'.');
 title('Flattend data')
 xlabel('number of days after 01-01-2019');
 ylabel('Photometrix flux')
