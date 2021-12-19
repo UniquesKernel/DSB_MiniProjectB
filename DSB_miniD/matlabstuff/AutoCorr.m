@@ -64,7 +64,7 @@ axis([-5000 5000 -0.2 0.2])
 
 figure(4)
 hold on
-plot(mod(time+0.2,0.1),FlatData,'.');
-title('Flattend data')
-xlabel('number of days after 01-01-2019');
+plot(mod(time+10,450*delta_t),FlatData,'.');
+title('Folded timeseries')
+xlabel('Days');
 ylabel('Photometrix flux')
