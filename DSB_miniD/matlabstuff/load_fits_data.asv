@@ -29,31 +29,18 @@ spectrogram(data,blackman(WindowsLength), WindowsLength-12, WindowsLength, f_sam
 
 view(-45,65)
 
-n = 2;
-fc = 5;
-fs = f_sample;
-[b,a] = butter(n,fc/(fs/2));
-h = filter(b,a,[1 zeros(1,500)]);
+M = 100;
 
-% tidsdom�nefiltrering
-y_med_conv = conv(data,h);
+window = hamming(M);
 
-figure(2)
-plot(y_med_conv)
-hold on
+N = length(data)+length(window)-1;
 
+data_conv = conv(data,window);
+figure(3)
+plot(data_conv)
+
+data_conv_fft = fft(data_conv, );
 
 
-% frekvensdom�nefiltrering
-N = length(data) + length(h)-1;
-X = fft(data, N);
-H = fft(h, N);
-Y = X.*H';
-y_med_DFT = ifft(Y);
-
-plot(y_med_DFT,'r')
-xlabel("Tid (dage) efter 1-1-2009");
-ylabel("Photometrisk flux (e^-/s)")
-title('Time domain for convolution and frequency domain multiplication')
 
 
